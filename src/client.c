@@ -14,7 +14,8 @@ int main(){
     list->ptr_->pop_back(list);
     list->ptr_->display(list);
     #endif 
-
+    
+    #if 1
     list->ptr_->push_back(10);
     list->ptr_->push_back(20);
     list->ptr_->push_back(30);
@@ -24,5 +25,6 @@ int main(){
     list->ptr_->display();
     list->ptr_->pop_back();
     list->ptr_->display();
+    #endif
     return 0;
 }
