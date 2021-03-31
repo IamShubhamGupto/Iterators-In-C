@@ -32,7 +32,7 @@ struct vtbl_list_t{
 
 #if 1
 struct vtbl_list_t{
-    list_t* list_ptr;
+    list_t* self;
     void (*push_front)( int);
     void (*push_back)( int);
     void (*insert)( int, int);

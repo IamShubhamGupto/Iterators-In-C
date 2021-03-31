@@ -101,44 +101,44 @@ void display_list(list_t* list){
 static vtbl_list_t vtbl_list;
 void push_front(int value_){
     node_t* temp = init_node(value_);
-    temp->next_ = vtbl_list.list_ptr->head_;
-    if(vtbl_list.list_ptr->head_ != NULL){
-        vtbl_list.list_ptr->head_->prev_ = temp;
+    temp->next_ = vtbl_list.self->head_;
+    if(vtbl_list.self->head_ != NULL){
+        vtbl_list.self->head_->prev_ = temp;
     }else{
-        vtbl_list.list_ptr->tail_ = temp;
+        vtbl_list.self->tail_ = temp;
     }
-    vtbl_list.list_ptr->head_ = temp;
+    vtbl_list.self->head_ = temp;
 }
 void push_back(int value_){
     node_t* temp = init_node(value_);
     //no element
-    if(vtbl_list.list_ptr->head_ == NULL){
-        vtbl_list.list_ptr->head_ = temp;
-        vtbl_list.list_ptr->tail_ = temp;
+    if(vtbl_list.self->head_ == NULL){
+        vtbl_list.self->head_ = temp;
+        vtbl_list.self->tail_ = temp;
     }
-    temp->prev_ = vtbl_list.list_ptr->tail_;
-    vtbl_list.list_ptr->tail_->next_ = temp;
-    vtbl_list.list_ptr->tail_ = temp; 
+    temp->prev_ = vtbl_list.self->tail_;
+    vtbl_list.self->tail_->next_ = temp;
+    vtbl_list.self->tail_ = temp; 
 }
 void insert(int value_, int position){
 
 }
 void pop_back(){
-    node_t* head = vtbl_list.list_ptr->head_;
-    node_t* tail = vtbl_list.list_ptr->tail_;
+    node_t* head = vtbl_list.self->head_;
+    node_t* tail = vtbl_list.self->tail_;
     //no element
     if(head == NULL){
         return;
     }
     //1 element
     if(head == tail){
-        vtbl_list.list_ptr->head_ = NULL;
-        vtbl_list.list_ptr->tail_ = NULL;
+        vtbl_list.self->head_ = NULL;
+        vtbl_list.self->tail_ = NULL;
         free(head);
         head = NULL;
     }
 
-    vtbl_list.list_ptr->tail_ = tail->prev_;
+    vtbl_list.self->tail_ = tail->prev_;
     tail->prev_->next_ = NULL;
     tail->prev_ = NULL;
     free(tail);
@@ -149,17 +149,17 @@ void pop_back(){
     // head = NULL;
 }
 void pop_front(){
-    node_t* head = vtbl_list.list_ptr->head_;
+    node_t* head = vtbl_list.self->head_;
     //no element
     if(head == NULL){
         return;
     }
-    vtbl_list.list_ptr->head_ = vtbl_list.list_ptr->head_->next_;
+    vtbl_list.self->head_ = vtbl_list.self->head_->next_;
     free(head);
     head = NULL;
 }
 void erase(int position){
-    node_t* current = vtbl_list.list_ptr->head_;
+    node_t* current = vtbl_list.self->head_;
     node_t* previous = NULL;
     int i = 0;
     while(i != position){
@@ -176,7 +176,7 @@ void erase(int position){
 }
 
 void display_list(){
-    node_t* current = vtbl_list.list_ptr->head_;
+    node_t* current = vtbl_list.self->head_;
     while(current != NULL){
         printf("%d\t",current->value_);
         current = current->next_;
@@ -199,6 +199,6 @@ list_t* init_list(){
     temp->head_ = NULL;
     temp->tail_ = NULL;
     temp->ptr_ = &vtbl_list;
-    temp->ptr_->list_ptr = temp;
+    temp->ptr_->self = temp;
     return temp;
 }
