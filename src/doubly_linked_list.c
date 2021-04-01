@@ -10,7 +10,7 @@ node_t* init_node(int value_){
     temp->prev_ = NULL;
     return temp;
 }
-#if 0
+#if 1
 void push_front(list_t* list, int value_){
     node_t* temp = init_node(value_);
     temp->next_ = list->head_;
@@ -97,7 +97,7 @@ void display_list(list_t* list){
 }
 #endif
 
-#if 1
+#if 0
 static vtbl_list_t vtbl_list;
 void push_front(int value_){
     node_t* temp = init_node(value_);
@@ -183,7 +183,7 @@ void display_list(){
     }
     printf("\n");
 }
-#endif
+
 static vtbl_list_t vtbl_list = {
     NULL,
     push_front,
@@ -194,11 +194,14 @@ static vtbl_list_t vtbl_list = {
     erase,
     display_list
 };
+#endif
 list_t* init_list(){
     list_t* temp = malloc(sizeof(list_t));
     temp->head_ = NULL;
     temp->tail_ = NULL;
+    #if 0
     temp->ptr_ = &vtbl_list;
     temp->ptr_->self = temp;
+    #endif
     return temp;
 }

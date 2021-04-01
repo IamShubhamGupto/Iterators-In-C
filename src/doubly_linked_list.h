@@ -8,13 +8,16 @@ struct node{
 };
 typedef struct node node_t;
 
+#if 0
 struct vtbl_list_t;
+#endif 
 
 struct doubly_linked_list{
     node_t* head_;
     node_t* tail_;
+    #if 0
     struct vtbl_list_t* ptr_;
-
+    #endif
 };
 typedef struct doubly_linked_list list_t;
 #if 0
@@ -30,7 +33,7 @@ struct vtbl_list_t{
 };
 #endif
 
-#if 1
+#if 0
 struct vtbl_list_t{
     list_t* self;
     void (*push_front)( int);
@@ -41,17 +44,19 @@ struct vtbl_list_t{
     void (*erase)( int);
     void (*display)();
 };
-#endif
+
 typedef struct vtbl_list_t vtbl_list_t;
+#endif
 
 node_t* init_node(int);
 list_t* init_list();
-// void push_front(list_t*, int);
-// void push_back(list_t*, int);
-// void insert(list_t*, int, int);
-// void pop_back(list_t*);
-// void pop_front(list_t*);
-// void erase(list_t*, int);
+void push_front(list_t*, int);
+void push_back(list_t*, int);
+void insert(list_t*, int, int);
+void pop_back(list_t*);
+void pop_front(list_t*);
+void erase(list_t*, int);
+void display_list(list_t*);
 
 
 #endif

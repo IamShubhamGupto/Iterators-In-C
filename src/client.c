@@ -3,6 +3,15 @@
 
 int main(){
     list_t* list = init_list();
+    push_back(list,10);
+    push_back(list,20);
+    push_back(list,30);
+    push_front(list,40);
+    display_list(list);
+    pop_front(list);
+    display_list(list);
+    pop_back(list);
+    display_list(list);    
     #if 0
     list->ptr_->push_back(list,10);
     list->ptr_->push_back(list,20);
@@ -15,7 +24,7 @@ int main(){
     list->ptr_->display(list);
     #endif 
     
-    #if 1
+    #if 0
     list->ptr_->push_back(10);
     list->ptr_->push_back(20);
     list->ptr_->push_back(30);
