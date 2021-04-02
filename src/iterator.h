@@ -1,5 +1,6 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
+/*
 struct iterator;
 
 struct vtbl_iterator{
@@ -26,4 +27,5 @@ iterator_t* init_iterator();
 // iterator_t* prev(iterator_t*, int);
 // int distance(iterator_t*, iterator_t*);
 // void advance(iterator_t*, int);
+*/
 #endif

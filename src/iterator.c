@@ -2,7 +2,7 @@
 #include "doubly_linked_list.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+/*
 //abstract class
 iterator_t* begin(void* ptr){
 
@@ -38,3 +38,4 @@ iterator_t* init_iterator(){
     temp->ptr_ = &vtbl_iter;
     return temp;
 }
+*/
