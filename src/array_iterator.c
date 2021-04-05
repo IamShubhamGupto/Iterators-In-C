@@ -35,7 +35,7 @@ iter_object_t* prev(iter_object_t* it, int n){
 }
 
 int distance(const iter_object_t* it1, const iter_object_t* it2){
-    return it2->pointer_ - it1->pointer_;
+    return (int*)it2->pointer_ - (int*)it1->pointer_;
 }
 
 vtbl_iterator_t vtbl_array = {
