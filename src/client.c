@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "iterator.h"
 #include "doubly_linked_list.h"
 #include "array_iterator.h"
-
+// #include "array_iterator.c"
 int main(){
     list_t* list = init_list();
     push_back(list,10);
@@ -21,47 +22,24 @@ int main(){
         for(int i = 0; i < n; ++i){
             array[i] = i+1;
         }
-        iterator_t* it1 = begin(array);
-        printf("first element = %d\n", *it1->pointer_);
 
-        iterator_t* it2 = end(array, n);
+        iterator_t* iter_fn = init_iterator(&vtbl_array);
         
-        printf("%d\n", distance(it1,it2));
+        iter_object_t* it1 = iter_fn->ptr_->begin(array);
+        printf("[begin] first element = %d\n", *(int*)it1->pointer_);
 
-        iterator_t* it3 = prev(it2,1);
-        printf("last element = %d\n", *it3->pointer_);
+        iter_object_t* it2 = iter_fn->ptr_->end(array, n);
+
+        printf("[distance] [end] %d\n", iter_fn->ptr_->distance(it1,it2));
+
+        iter_object_t* it3 = iter_fn->ptr_->prev(it2,1);
+        printf("[prev] last element = %d\n", *(int*)it3->pointer_);
 
         //same output
-        //advance(it1,1);
-        iterator_t* it4 = next(it1,1);
-        printf("Second element of the array = %d\n",*it4->pointer_);
+        //iter_fn->ptr_->advance(it1,1);
+        iter_object_t* it4 = iter_fn->ptr_->next(it1,1);
+        printf("[next] Second element of the array = %d\n",*(int*)it4->pointer_);
 
     }
-    
-
-
-    #if 0
-    list->ptr_->push_back(list,10);
-    list->ptr_->push_back(list,20);
-    list->ptr_->push_back(list,30);
-    list->ptr_->push_front(list,40);
-    list->ptr_->display(list);
-    list->ptr_->pop_front(list);
-    list->ptr_->display(list);
-    list->ptr_->pop_back(list);
-    list->ptr_->display(list);
-    #endif 
-    
-    #if 0
-    list->ptr_->push_back(10);
-    list->ptr_->push_back(20);
-    list->ptr_->push_back(30);
-    list->ptr_->push_front(40);
-    list->ptr_->display();
-    list->ptr_->pop_front();
-    list->ptr_->display();
-    list->ptr_->pop_back();
-    list->ptr_->display();
-    #endif
     return 0;
 }

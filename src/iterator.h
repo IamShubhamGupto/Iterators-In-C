@@ -1,31 +1,31 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
-/*
-struct iterator;
 
-struct vtbl_iterator{
-    struct iterator* (*begin)(void*);
-    struct iterator* (*end)(void*);
-    struct iterator* (*next)(struct iterator*, int);
-    struct iterator* (*prev)(struct iterator*, int);
-    int (*distance)(struct iterator*, struct iterator*);
-    void (*advance)(struct iterator*, int);
-};
-typedef struct vtbl_iterator vtbl_iterator_t;
+struct vtbl_iterator;
 
 struct iterator{
-    void* pointer_;
-    vtbl_iterator_t* ptr_;
+    struct vtbl_iterator* ptr_;
 };
 typedef struct iterator iterator_t;
 
-iterator_t* init_iterator();
+struct iter_object{
+    void* pointer_;
+};
+typedef struct iter_object iter_object_t;
 
-// iterator_t* begin(void*);
-// iterator_t* end(void*);
-// iterator_t* next(iterator_t*, int);
-// iterator_t* prev(iterator_t*, int);
-// int distance(iterator_t*, iterator_t*);
-// void advance(iterator_t*, int);
-*/
+struct vtbl_iterator{
+    iter_object_t* (*begin)(const void*);
+    iter_object_t* (*end)(const void*, int);
+    void (*advance)(iter_object_t*, int);
+    iter_object_t* (*next)(iter_object_t*, int);
+    iter_object_t* (*prev)(iter_object_t*, int);
+    int (*distance)(const iter_object_t*, const iter_object_t*);
+};
+typedef struct vtbl_iterator vtbl_iterator_t;
+
+iterator_t* init_iterator(vtbl_iterator_t*);
+
+extern vtbl_iterator_t vtbl_array;
+extern vtbl_iterator_t vtbl_list;
+
 #endif
