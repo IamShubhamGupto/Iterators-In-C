@@ -6,13 +6,13 @@
 #include <stdio.h>
 #define DEBUG 1
 //random access iterators
-static iter_object_t* begin(const int* array){
+static iter_object_t* begin(const void* array){
     iter_object_t* it = malloc(sizeof(iter_object_t));
     it->pointer_ = (int*)array;
     return it;
 }
 
-static iter_object_t* end(const int* array, int n){
+static iter_object_t* end(const void* array, int n){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
     iter_object_t* it = malloc(sizeof(iter_object_t));
@@ -38,7 +38,7 @@ static int distance(const iter_object_t* it1, const iter_object_t* it2){
     return (int*)it2->pointer_ - (int*)it1->pointer_;
 }
 
-vtbl_array_t vtbl_array = {
+vtbl_iterator_t vtbl_array = {
     begin,
     end,
     advance,

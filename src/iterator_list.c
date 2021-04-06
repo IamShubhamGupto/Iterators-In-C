@@ -7,18 +7,18 @@
 #include <stdio.h>
 #define DEBUG 0
 //bidirectional access iterators
-static iter_object_t* begin(const list_t* list){
+static iter_object_t* begin(const void* list){
     iter_object_t* it = malloc(sizeof(iter_object_t));
-    it->pointer_ = list->head_;
+    it->pointer_ = ((list_t*)list)->head_;
     return it;
 }
 
-static iter_object_t* end(const list_t* list, int n){
+static iter_object_t* end(const void* list, int n){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
     iter_object_t* it = malloc(sizeof(iter_object_t));
     node_t* temp = init_node(-1);
-    temp->prev_ = list->tail_;
+    temp->prev_ = ((list_t*)list)->tail_;
     it->pointer_ = temp;
     if(DEBUG){
         printf("[end DEBUG] %d\n", ((node_t*)it->pointer_)->prev_->value_);
@@ -64,7 +64,7 @@ static int distance(const iter_object_t* it1, const iter_object_t* it2){
     return i;
 }
 
-vtbl_list_t vtbl_list = {
+vtbl_iterator_t vtbl_list = {
     begin,
     end,
     advance,

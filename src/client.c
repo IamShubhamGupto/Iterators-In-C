@@ -26,19 +26,19 @@ int main(){
 
         iterator_t* iter_fn = init_iterator(&vtbl_list);
 
-        iter_object_t* it1 = ((vtbl_list_t*)iter_fn->ptr_)->begin(list);
+        iter_object_t* it1 = (iter_fn->ptr_)->begin(list);
         printf("[begin] first element = %d\n", ((node_t*)it1->pointer_)->value_);
 
-        iter_object_t* it2 = ((vtbl_list_t*)iter_fn->ptr_)->end(list, 0);
+        iter_object_t* it2 = (iter_fn->ptr_)->end(list, 0);
 
-        printf("[distance] [end] %d\n", ((vtbl_list_t*)iter_fn->ptr_)->distance(it1,it2));
+        printf("[distance] [end] %d\n", (iter_fn->ptr_)->distance(it1,it2));
 
-        iter_object_t* it3 = ((vtbl_list_t*)iter_fn->ptr_)->prev(it2,1);
+        iter_object_t* it3 = (iter_fn->ptr_)->prev(it2,1);
         printf("[prev] last element = %d\n", ((node_t*)it3->pointer_)->value_);
 
         //same output
         //iter_fn->ptr_->advance(it1,1);
-        iter_object_t* it4 = ((vtbl_list_t*)iter_fn->ptr_)->next(it1,1);
+        iter_object_t* it4 = (iter_fn->ptr_)->next(it1,1);
         printf("[next] Second element of the array = %d\n",((node_t*)it4->pointer_)->value_);
     }
      
@@ -53,19 +53,19 @@ int main(){
 
         iterator_t* iter_fn = init_iterator(&vtbl_array);
         
-        iter_object_t* it1 = ((vtbl_array_t*)iter_fn->ptr_)->begin(array);
+        iter_object_t* it1 = (iter_fn->ptr_)->begin(array);
         printf("[begin] first element = %d\n", *(int*)it1->pointer_);
 
-        iter_object_t* it2 = ((vtbl_array_t*)iter_fn->ptr_)->end(array, n);
+        iter_object_t* it2 = (iter_fn->ptr_)->end(array, n);
 
-        printf("[distance] [end] %d\n", ((vtbl_array_t*)iter_fn->ptr_)->distance(it1,it2));
+        printf("[distance] [end] %d\n", (iter_fn->ptr_)->distance(it1,it2));
 
-        iter_object_t* it3 = ((vtbl_array_t*)iter_fn->ptr_)->prev(it2,1);
+        iter_object_t* it3 = (iter_fn->ptr_)->prev(it2,1);
         printf("[prev] last element = %d\n", *(int*)it3->pointer_);
 
         //same output
         //iter_fn->ptr_->advance(it1,1);
-        iter_object_t* it4 =((vtbl_array_t*)iter_fn->ptr_)->next(it1,1);
+        iter_object_t* it4 =(iter_fn->ptr_)->next(it1,1);
         printf("[next] Second element of the array = %d\n",*(int*)it4->pointer_);
 
     }

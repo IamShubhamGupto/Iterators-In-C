@@ -1,8 +1,8 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
-
+typedef struct vtbl_iterator vtbl_iterator_t;
 struct iterator{
-    void* ptr_;
+    vtbl_iterator_t* ptr_;
 };
 typedef struct iterator iterator_t;
 
@@ -11,7 +11,7 @@ struct iter_object{
 };
 typedef struct iter_object iter_object_t;
 
-#if 0
+#if 1
 struct vtbl_iterator{
     iter_object_t* (*begin)(const void*);
     iter_object_t* (*end)(const void*, int);
@@ -23,6 +23,6 @@ struct vtbl_iterator{
 #endif 
 typedef struct vtbl_iterator vtbl_iterator_t;
 
-iterator_t* init_iterator(void*);
+iterator_t* init_iterator(vtbl_iterator_t*);
 
 #endif
