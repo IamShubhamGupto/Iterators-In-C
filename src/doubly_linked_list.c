@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "doubly_linked_list.h"
-#define DEBUG 1
+#define DEBUG 0
 node_t* init_node(int value_){
     node_t* temp = malloc(sizeof(node_t));
     temp->value_ = value_;
@@ -90,7 +90,16 @@ void erase(list_t* list, int position){
 void display_list(list_t* list){
     node_t* current = list->head_;
     while(current != NULL){
-        printf("%d\t",current->value_);
+        printf("value = %d\t",current->value_);
+        if(DEBUG){
+            if(current->next_ != NULL)
+                printf("next value = %d\t",current->next_->value_);
+            if(current->prev_ != NULL)
+                printf("prev value = %d\n",current->prev_->value_);
+            else    
+                printf("\n");
+        }
+            
         current = current->next_;
     }
     printf("\n");

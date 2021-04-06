@@ -1,5 +1,5 @@
-a.out : client.o iterator.o doubly_linked_list.o iterator_array.o
-	gcc -g client.o iterator.o doubly_linked_list.o iterator_array.o
+a.out : client.o iterator.o doubly_linked_list.o iterator_array.o iterator_list.o
+	gcc -g client.o iterator.o doubly_linked_list.o iterator_array.o iterator_list.o
 client.o : client.c iterator.h
 	gcc -c -g client.c
 iterator.o : iterator.c iterator.h
