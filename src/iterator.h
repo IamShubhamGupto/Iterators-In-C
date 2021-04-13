@@ -23,6 +23,6 @@ struct vtbl_iterator{
 #endif 
 typedef struct vtbl_iterator vtbl_iterator_t;
 
-iterator_t* init_iterator(vtbl_iterator_t*);
+iterator_t* init_iterator(const char*);
 
 #endif

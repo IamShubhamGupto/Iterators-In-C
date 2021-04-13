@@ -24,7 +24,7 @@ int main(){
         // pop_back(list);
         // display_list(list);  
 
-        iterator_t* iter_fn = init_iterator(&vtbl_list);
+        iterator_t* iter_fn = init_iterator("list");
 
         iter_object_t* it1 = (iter_fn->ptr_)->begin(list);
         printf("[begin] first element = %d\n", ((node_t*)it1->pointer_)->value_);
@@ -51,7 +51,7 @@ int main(){
             array[i] = i+1;
         }
 
-        iterator_t* iter_fn = init_iterator(&vtbl_array);
+        iterator_t* iter_fn = init_iterator("array");
         
         iter_object_t* it1 = (iter_fn->ptr_)->begin(array);
         printf("[begin] first element = %d\n", *(int*)it1->pointer_);
@@ -68,6 +68,10 @@ int main(){
         iter_object_t* it4 =(iter_fn->ptr_)->next(it1,1);
         printf("[next] Second element of the array = %d\n",*(int*)it4->pointer_);
 
+    }
+
+    {
+        iterator_t* iter_fn = init_iterator("tree");
     }
     return 0;
 }
