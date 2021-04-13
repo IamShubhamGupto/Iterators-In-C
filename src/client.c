@@ -14,7 +14,7 @@ int main(){
         push_back(list,20);
         push_back(list,30);
         push_front(list,40);
-        display_list(list);
+        //display_list(list);
         if(DEBUG){
             printf("%d\n", list->tail_->prev_->value_);
         }
@@ -40,6 +40,15 @@ int main(){
         //iter_fn->ptr_->advance(it1,1);
         iter_object_t* it4 = (iter_fn->ptr_)->next(it1,1);
         printf("[next] Second element of the array = %d\n",((node_t*)it4->pointer_)->value_);
+
+        printf("[Looping using iterators]\n");
+        iter_object_t* first = (iter_fn->ptr_)->begin(list);
+        iter_object_t* last = (iter_fn->ptr_)->end(list,0);
+        while(first->pointer_ != NULL && first->pointer_ != last->pointer_){
+            printf("%d\t",((node_t*)first->pointer_)->value_);
+            first = iter_fn->ptr_->next(first,1);
+        }
+        printf("\n");
     }
      
 
@@ -52,6 +61,15 @@ int main(){
         }
 
         iterator_t* iter_fn = init_iterator("array");
+
+        printf("[Looping using iterators]\n");
+        iter_object_t* first = (iter_fn->ptr_)->begin(array);
+        iter_object_t* last = (iter_fn->ptr_)->end(array,n);
+        while(first->pointer_ != last->pointer_){
+            printf("%d\t",*((int*)first->pointer_));
+            first = iter_fn->ptr_->next(first,1);
+        }
+        printf("\n");
         
         iter_object_t* it1 = (iter_fn->ptr_)->begin(array);
         printf("[begin] first element = %d\n", *(int*)it1->pointer_);
