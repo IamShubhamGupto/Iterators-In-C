@@ -1,28 +1,28 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
 typedef struct vtbl_iterator vtbl_iterator_t;
-struct iterator{
+struct iterator_functions{
     vtbl_iterator_t* ptr_;
 };
-typedef struct iterator iterator_t;
+typedef struct iterator_functions iterator_functions_t;
 
 struct iter_object{
     void* pointer_;
 };
-typedef struct iter_object iter_object_t;
+typedef struct iter_object iterator_t;
 
 #if 1
 struct vtbl_iterator{
-    iter_object_t* (*begin)(const void*);
-    iter_object_t* (*end)(const void*, int);
-    void (*advance)(iter_object_t*, int);
-    iter_object_t* (*next)(iter_object_t*, int);
-    iter_object_t* (*prev)(iter_object_t*, int);
-    int (*distance)(const iter_object_t*, const iter_object_t*);
+    iterator_t* (*begin)(const void*);
+    iterator_t* (*end)(const void*, int);
+    void (*advance)(iterator_t*, int);
+    iterator_t* (*next)(iterator_t*, int);
+    iterator_t* (*prev)(iterator_t*, int);
+    int (*distance)(const iterator_t*, const iterator_t*);
 };
 #endif 
 typedef struct vtbl_iterator vtbl_iterator_t;
 
-iterator_t* init_iterator(const char*);
+iterator_functions_t* init_iterator(const char*);
 
 #endif

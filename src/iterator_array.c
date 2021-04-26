@@ -6,35 +6,35 @@
 #include <stdio.h>
 #define DEBUG 1
 //random access iterators
-static iter_object_t* begin(const void* array){
-    iter_object_t* it = malloc(sizeof(iter_object_t));
+static iterator_t* begin(const void* array){
+    iterator_t* it = malloc(sizeof(iterator_t));
     it->pointer_ = (int*)array;
     return it;
 }
 
-static iter_object_t* end(const void* array, int n){
+static iterator_t* end(const void* array, int n){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
-    iter_object_t* it = malloc(sizeof(iter_object_t));
+    iterator_t* it = malloc(sizeof(iterator_t));
     it->pointer_ = (int*)array + n;
     return it;
 }
 
-static void advance(iter_object_t* it, int n){
+static void advance(iterator_t* it, int n){
     it->pointer_ = (int*)it->pointer_ + n;
 }
 
-static iter_object_t* next(iter_object_t* it, int n){
+static iterator_t* next(iterator_t* it, int n){
     advance(it, n);
     return it;
 }
 
-static iter_object_t* prev(iter_object_t* it, int n){
+static iterator_t* prev(iterator_t* it, int n){
     advance(it, -n);
     return it;
 }
 
-static int distance(const iter_object_t* it1, const iter_object_t* it2){
+static int distance(const iterator_t* it1, const iterator_t* it2){
     return (int*)it2->pointer_ - (int*)it1->pointer_;
 }
 

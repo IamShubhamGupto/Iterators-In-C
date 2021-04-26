@@ -7,16 +7,16 @@
 #include <stdio.h>
 #define DEBUG 0
 //bidirectional access iterators
-static iter_object_t* begin(const void* list){
-    iter_object_t* it = malloc(sizeof(iter_object_t));
+static iterator_t* begin(const void* list){
+    iterator_t* it = malloc(sizeof(iterator_t));
     it->pointer_ = ((list_t*)list)->head_;
     return it;
 }
 
-static iter_object_t* end(const void* list, int n){
+static iterator_t* end(const void* list, int n){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
-    iter_object_t* it = malloc(sizeof(iter_object_t));
+    iterator_t* it = malloc(sizeof(iterator_t));
     node_t* temp = init_node(-1);
     temp->prev_ = ((list_t*)list)->tail_;
     it->pointer_ = temp;
@@ -26,7 +26,7 @@ static iter_object_t* end(const void* list, int n){
     return it;
 }
 
-static void advance(iter_object_t* it, int n){
+static void advance(iterator_t* it, int n){
     int i = 0;
     if(n > 0){
         while(i < n){
@@ -43,17 +43,17 @@ static void advance(iter_object_t* it, int n){
     
 }
 
-static iter_object_t* next(iter_object_t* it, int n){
+static iterator_t* next(iterator_t* it, int n){
     advance(it, n);
     return it;
 }
 
-static iter_object_t* prev(iter_object_t* it, int n){
+static iterator_t* prev(iterator_t* it, int n){
     advance(it, -n);
     return it;
 }
 
-static int distance(const iter_object_t* it1, const iter_object_t* it2){
+static int distance(const iterator_t* it1, const iterator_t* it2){
     node_t* first = (node_t*)it1->pointer_;
     node_t* last = (node_t*)it2->pointer_;
     int i = 1;
