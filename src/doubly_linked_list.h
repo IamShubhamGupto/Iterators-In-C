@@ -48,15 +48,15 @@ struct vtbl_list_t{
 typedef struct vtbl_list_t vtbl_list_t;
 #endif
 
-node_t* init_node(int);
-list_t* init_list();
-void push_front(list_t*, int);
-void push_back(list_t*, int);
-void insert(list_t*, int, int);
-void pop_back(list_t*);
-void pop_front(list_t*);
-void erase(list_t*, int);
-void display_list(list_t*);
+static node_t* init_node(int);
+static list_t* init_list();
+static void push_front(list_t*, int);
+static void push_back(list_t*, int);
+static void insert(list_t*, int, int);
+static void pop_back(list_t*);
+static void pop_front(list_t*);
+static void erase(list_t*, int);
+static void display_list(list_t*);
 
 
 #endif

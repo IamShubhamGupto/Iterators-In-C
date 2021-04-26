@@ -15,8 +15,8 @@ iterator_functions_t* init_iterator(const char* vtbl_iter){
        temp->ptr_ = &vtbl_list; 
     }else if(strcmp(vtbl_iter,"array")==0){
         temp->ptr_ = &vtbl_array;
-    // }else if(strcmp(vtbl_iter,"tree")==0){
-    //     temp->ptr_ = &vtbl_tree;
+    }else if(strcmp(vtbl_iter,"tree")==0){
+        temp->ptr_ = &vtbl_tree;
     }else{
         printf("Invalid data structure\n");
         printf("Exiting...\n");

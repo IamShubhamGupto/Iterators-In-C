@@ -4,6 +4,7 @@
 #include "iterator_array.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #define DEBUG 1
 //random access iterators
 static iterator_t* begin(const void* array){
@@ -12,9 +13,13 @@ static iterator_t* begin(const void* array){
     return it;
 }
 
-static iterator_t* end(const void* array, int n){
+static iterator_t* end(const void* array,...){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
+    va_list valist;
+    va_start(valist,1);
+    int n = va_arg(valist, int);
+    va_end(valist);
     iterator_t* it = malloc(sizeof(iterator_t));
     it->pointer_ = (int*)array + n;
     return it;

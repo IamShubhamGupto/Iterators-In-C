@@ -14,7 +14,7 @@ typedef struct iter_object iterator_t;
 #if 1
 struct vtbl_iterator{
     iterator_t* (*begin)(const void*);
-    iterator_t* (*end)(const void*, int);
+    iterator_t* (*end)(const void*, ...);
     void (*advance)(iterator_t*, int);
     iterator_t* (*next)(iterator_t*, int);
     iterator_t* (*prev)(iterator_t*, int);

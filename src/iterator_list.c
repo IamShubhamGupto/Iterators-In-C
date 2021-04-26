@@ -2,9 +2,10 @@
 #define LIST_ITERATOR_C
 #include "iterator.h"
 #include "iterator_list.h"
-#include "doubly_linked_list.h"
+#include "doubly_linked_list.c"
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 #define DEBUG 0
 //bidirectional access iterators
 static iterator_t* begin(const void* list){
@@ -13,11 +14,11 @@ static iterator_t* begin(const void* list){
     return it;
 }
 
-static iterator_t* end(const void* list, int n){
+static iterator_t* end(const void* list,...){
     //does not work with pointers
     //int n = sizeof(array)/sizeof(array[0]);
     iterator_t* it = malloc(sizeof(iterator_t));
-    node_t* temp = init_node(-1);
+    node_t* temp = init_node(INT_MIN);
     temp->prev_ = ((list_t*)list)->tail_;
     it->pointer_ = temp;
     if(DEBUG){

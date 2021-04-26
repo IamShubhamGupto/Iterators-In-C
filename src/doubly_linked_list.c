@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "doubly_linked_list.h"
 #define DEBUG 0
-node_t* init_node(int value_){
+static node_t* init_node(int value_){
     node_t* temp = malloc(sizeof(node_t));
     temp->value_ = value_;
     temp->next_ = NULL;
@@ -11,7 +11,7 @@ node_t* init_node(int value_){
     return temp;
 }
 #if 1
-void push_front(list_t* list, int value_){
+static void push_front(list_t* list, int value_){
     node_t* temp = init_node(value_);
     temp->next_ = list->head_;
     if(list->head_ != NULL){
@@ -21,7 +21,7 @@ void push_front(list_t* list, int value_){
     }
     list->head_ = temp;
 }
-void push_back(list_t* list, int value_){
+static void push_back(list_t* list, int value_){
     node_t* temp = init_node(value_);
     //no element
     if(list->head_ == NULL){
@@ -32,10 +32,10 @@ void push_back(list_t* list, int value_){
     list->tail_->next_ = temp;
     list->tail_ = temp; 
 }
-void insert(list_t* list, int value_, int position){
+static void insert(list_t* list, int value_, int position){
 
 }
-void pop_back(list_t* list){
+static void pop_back(list_t* list){
     node_t* head = list->head_;
     node_t* tail = list->tail_;
     //no element
@@ -60,7 +60,7 @@ void pop_back(list_t* list){
     // free(head);
     // head = NULL;
 }
-void pop_front(list_t* list){
+static void pop_front(list_t* list){
     node_t* head = list->head_;
     //no element
     if(head == NULL){
@@ -70,7 +70,7 @@ void pop_front(list_t* list){
     free(head);
     head = NULL;
 }
-void erase(list_t* list, int position){
+static void erase(list_t* list, int position){
     node_t* current = list->head_;
     node_t* previous = NULL;
     int i = 0;
@@ -87,7 +87,7 @@ void erase(list_t* list, int position){
     current = NULL;
 }
 
-void display_list(list_t* list){
+static void display_list(list_t* list){
     node_t* current = list->head_;
     while(current != NULL){
         printf("value = %d\t",current->value_);
@@ -106,7 +106,7 @@ void display_list(list_t* list){
 }
 #endif
 
-list_t* init_list(){
+static list_t* init_list(){
     list_t* temp = malloc(sizeof(list_t));
     temp->head_ = NULL;
     temp->tail_ = NULL;
