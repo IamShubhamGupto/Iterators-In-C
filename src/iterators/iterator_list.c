@@ -2,7 +2,7 @@
 #define LIST_ITERATOR_C
 #include "iterator.h"
 #include "iterator_list.h"
-#include "doubly_linked_list.c"
+#include "../data_structures/doubly_linked_list.c"
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>

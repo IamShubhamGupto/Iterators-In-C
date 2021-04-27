@@ -2,7 +2,7 @@
 #define LIST_ITERATOR_C
 #include "iterator.h"
 #include "iterator_tree.h"
-#include "tree.c"
+#include "../data_structures/tree.c"
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>

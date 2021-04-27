@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "iterator.h"
-#include "tree.c"
+#include "../src/iterators/iterator.h"
+#include "../src/data_structures/tree.c"
 // #include "iterator_array.h"
 // #include "iterator_list.h"
 #define DEBUG_MAIN 0

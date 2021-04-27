@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "iterator.h"
-#include "doubly_linked_list.c"
+#include "../src/iterators/iterator.h"
+#include "../src/data_structures/doubly_linked_list.c"
 // #include "iterator_array.h"
 // #include "iterator_list.h"
 #define DEBUG 0

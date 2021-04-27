@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "iterator.h"
+#include "../src/iterators/iterator.h"
 // #include "iterator_array.h"
 // #include "iterator_list.h"
 #define DEBUG 0
