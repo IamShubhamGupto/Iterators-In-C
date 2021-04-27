@@ -136,7 +136,7 @@ static void print_in_order(tree_node_t* root, char* prefix, int isLeft)
     {
         char prefix2[strlen(prefix)+5];
         strcpy(prefix2, prefix);
-        printf(prefix);
+        printf("%s",prefix);
         printf(isLeft ? "├──" : "└──");
         printf("%d\n",root->value_);
         // if(isLeft){
