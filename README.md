@@ -1,9 +1,8 @@
 # Iterators-In-C
 The aim of this project is to provide a single interface to iterate over various data-structures in the C language. The following data-structures are currently supported:
 - Arrays
-- [ Doubly Linked Lists ](#markdown-header-data-structures) 
-- [ Binary Search Trees ](#markdown-header-data-structures)
-
+- Doubly Linked Lists 
+- Binary Search Trees 
 Due to the non generic nature of the C language, the data structures are expected to hold integer values. 
 ## How to Compile & Run
 <details>
