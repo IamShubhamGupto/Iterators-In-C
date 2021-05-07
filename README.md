@@ -3,6 +3,8 @@ The aim of this project is to provide a single interface to iterate over various
 - Arrays
 - Doubly Linked Lists 
 - Binary Search Trees 
+
+
 Due to the non generic nature of the C language, the data structures are expected to hold integer values. 
 ## How to Compile & Run
 <details>
@@ -91,3 +93,19 @@ Due to the non generic nature of the C language, the data structures are expecte
   | in_order_predecessor          | returns the in-order-predeccessor from the specified node|  
 </details>
 
+## Iterator Functions
+  | <b> Name        </b>          | <b> Definition </b>                               |
+  | -------------                 | -------------                                     |
+  | init_iterator                 | initialize a concrete iterator class for a type of data structure.        |
+  | begin                         | return an iterator object pointing to the first element of the data structure.         |
+  | end                           | return an iterator object pointing to the last element of the data structure.          |
+  | next                          | increment the iterator by certain postions / by 1 in case of a bidirectional iterator          |
+  | prev                          | decrement the iterator by certain postions  / by 1 in case of a bidirectional iterator         |
+  | advance                       | increment/ decrement the iterator by a specified value                                  |
+
+### By
+- [Shubham Gupta](https://github.com/IamShubhamGupto)
+- [Shubham Kumar](https://github.com/shubham2k)
+
+### License
+This work is licened under [GPL v3.0](LICENSE).
