@@ -41,9 +41,11 @@ static void push_back(list_t *list, int value_)
 }
 static void insert(list_t *list, int value_, int position)
 {
+    if (position < 0)
+        return;
     node_t *temp = list->head_;
     node_t *newNode = init_node(value_);
-    for (int i = 0; i < position - 1; i++)
+    for (int i = 0; i < position - 1; ++i)
     {
         temp = temp->next_;
         //printf("%d\n",temp->value_);
