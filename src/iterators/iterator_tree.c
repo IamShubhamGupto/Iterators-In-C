@@ -49,38 +49,61 @@ static void advance(iterator_t *it, int n)
 
 static iterator_t *next(iterator_t *it, int n)
 {
-    iterator_t *temp = it;
+    iterator_t *temp = malloc(sizeof(iterator_t));
+    temp->pointer_ = it->pointer_;
     advance(temp, n);
     return temp;
 }
 
 static iterator_t *prev(iterator_t *it, int n)
 {
-    iterator_t *temp = it;
+    iterator_t *temp = malloc(sizeof(iterator_t));
+    temp->pointer_ = it->pointer_;
     advance(temp, -n);
     return temp;
 }
+#if 1
 #define DEBUG_D_T 0
 static int distance(const iterator_t *it1, const iterator_t *it2)
 {
     tree_node_t *first = (tree_node_t *)it1->pointer_;
     tree_node_t *last = (tree_node_t *)it2->pointer_;
-    //iterator_t* it3 =
-    int i = 1;
-    while (first && first != last)
-    {
-        first = in_order_successor(first);
-        //printf("updating i\n");
-        if (first)
-            ++i;
-    }
     if (DEBUG_D_T)
     {
-        printf("returning %d\n", i);
+        printf("first val = %d\n", first->value_);
+        printf("last val = %d\n", last->value_);
     }
 
-    return i;
+    int i = 0;
+    while (first && first != last)
+    {
+        if (DEBUG_D_T)
+        {
+            printf("first val = %d\n", first->value_);
+            printf("updating i\n");
+        }
+        ++i;
+        first = pre_order_successor(first);
+    }
+
+    return i - 1;
 }
+#endif
+#if 0
+#define DEBUG_D_T 0
+static int distance(const iterator_t *it1, const iterator_t *it2)
+{
+    tree_node_t *first = (tree_node_t *)it1->pointer_;
+    tree_node_t *last = (tree_node_t *)it2->pointer_;
+    int key1 = first->value_;
+    int key2 = last->value_;
+    if (key1 > key2)
+    {
+        return get_distance(first, last);
+    }
+    return get_distance(last, first);
+}
+#endif
 
 vtbl_iterator_t vtbl_tree = {
     begin,

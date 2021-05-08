@@ -34,14 +34,16 @@ static void advance(iterator_t *it, int n)
 
 static iterator_t *next(iterator_t *it, int n)
 {
-    iterator_t *temp = it;
+    iterator_t *temp = malloc(sizeof(iterator_t));
+    temp->pointer_ = it->pointer_;
     advance(temp, n);
     return temp;
 }
 
 static iterator_t *prev(iterator_t *it, int n)
 {
-    iterator_t *temp = it;
+    iterator_t *temp = malloc(sizeof(iterator_t));
+    temp->pointer_ = it->pointer_;
     advance(temp, -n);
     return temp;
 }

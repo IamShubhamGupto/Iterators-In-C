@@ -50,6 +50,7 @@ int main()
             first = iter_fn->ptr_->next(first, 1);
         }
         printf("\n");
+        first = (iter_fn->ptr_)->begin(tree);
 
         printf("[distance] [next] %d\n", (iter_fn->ptr_)->distance(first, it4));
     }

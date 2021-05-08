@@ -294,7 +294,27 @@ static tree_node_t *in_order_successor(tree_node_t *node)
     }
     return node;
 }
+static tree_node_t *pre_order_successor(tree_node_t *node)
+{
+    if (node->left_)
+        return node->left_;
+    if (node->right_)
+        return node->right_;
 
+    tree_node_t *current = node;
+    tree_node_t *parent = node->parent_;
+    while (parent && parent->right_ == current)
+    {
+        current = current->parent_;
+        parent = parent->parent_;
+    }
+    //bad
+    if (parent == NULL)
+    {
+        return NULL;
+    }
+    return parent->right_;
+}
 static tree_node_t *in_order_predecessor(tree_node_t *node)
 {
     tree_node_t *parent = NULL;

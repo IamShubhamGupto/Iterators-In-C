@@ -91,6 +91,7 @@ Due to the non generic nature of the C language, the data structures are expecte
   | get_rightmost_leaf            | returns the rightmost child node from the specified node |
   | in_order_successor            | returns the in-order-successor from the specified node|
   | in_order_predecessor          | returns the in-order-predeccessor from the specified node|  
+  | pre_order_successor           | returns the pre-order-successor from the specified node| 
 </details>
 
 ## Iterator Functions
@@ -102,7 +103,7 @@ Due to the non generic nature of the C language, the data structures are expecte
   | next                          | increment the iterator by certain postions / by 1 in case of a bidirectional iterator          |
   | prev                          | decrement the iterator by certain postions  / by 1 in case of a bidirectional iterator         |
   | advance                       | increment/ decrement the iterator by a specified value                                  |
-  | distance                      | return the number of elements/distance between given 2 iterators                                 |
+  | distance                      | return the number of elements/distance between given 2 iterators. pre-order distance in-case of a tree.                                 |
 
 ### By
 - [Shubham Gupta](https://github.com/IamShubhamGupto)
