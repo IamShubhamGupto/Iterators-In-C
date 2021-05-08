@@ -100,8 +100,8 @@ Due to the non generic nature of the C language, the data structures are expecte
   | init_iterator                 | initialize a concrete iterator class for a type of data structure.        |
   | begin                         | return an iterator object pointing to the first element of the data structure.         |
   | end                           | return an iterator object pointing to the last element of the data structure.          |
-  | next                          | increment the iterator by certain postions / by 1 in case of a bidirectional iterator          |
-  | prev                          | decrement the iterator by certain postions  / by 1 in case of a bidirectional iterator         |
+  | next                          | increment the iterator by certain postions.         |
+  | prev                          | decrement the iterator by certain postions.        |
   | advance                       | increment/ decrement the iterator by a specified value                                  |
   | distance                      | return the number of elements/distance between given 2 iterators. pre-order distance in-case of a tree.                                 |
 
